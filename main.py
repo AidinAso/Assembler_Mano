@@ -32,15 +32,13 @@ symbol_table = {}
 # List of assembly code lines (for manual testing)
 assembly_code = [
     "ORG 100",
-    "LDA SUB",
-    "CMA",
-    "INC",
-    "ADD MIN",
-    "STA DIF",
+    "LDA NUM1",
+    "ADD NUM2",
+    "STA SUM",
     "HLT",
-    "MIN, DEC 83",
-    "SUB, DEC -23",
-    "DIF, HEX 0",
+    "NUM1, DEC 45",
+    "NUM2, DEC 78",
+    "SUM, HEX 0",
     "END",
 ]
 
@@ -121,5 +119,12 @@ def second_pass():
 first_pass()
 machine_code = second_pass()
 
-print("Symbol Table:", {k: f"{v:X}" for k, v in symbol_table.items()})
-print("Machine Code:", machine_code)
+# Print results in both hexadecimal and binary
+print("Symbol Table:")
+for symbol, address in symbol_table.items():
+    print(f"{symbol}: Hex={address:X}, Bin={bin(address)[2:].zfill(16)}")
+
+print("Machine Code:")
+for code in machine_code:
+    value = int(code, 16)
+    print(f"Hex={code}, Bin={bin(value)[2:].zfill(16)}")

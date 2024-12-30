@@ -121,6 +121,5 @@ def second_pass():
 first_pass()
 machine_code = second_pass()
 
-# Print results
 print("Symbol Table:", {k: f"{v:X}" for k, v in symbol_table.items()})
 print("Machine Code:", machine_code)

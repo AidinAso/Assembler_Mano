@@ -68,6 +68,21 @@ def first_pass():
 
             LC += 1
 
-first_pass()
+
+def second_pass():
+    global LC
+    LC = 0
+    machineCode = []
+    for line in assembly_code:
+        line = line.strip()
+        if not line or line.startswith(";"):
+            continue
+
+        parts = line.split()
+
+
+
+
+
 
 print("Symbol Table:", {k: f"{v:X}" for k, v in symbol_table.items()})
